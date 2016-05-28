@@ -15,7 +15,6 @@ from django.core.urlresolvers import reverse_lazy
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -59,6 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'foodles', 'templates')],
         'OPTIONS': {
             'context_processors': [
                 "django.contrib.auth.context_processors.auth",
