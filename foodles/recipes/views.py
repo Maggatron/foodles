@@ -2,9 +2,10 @@ import logging
 
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseRedirect
 
-from foodles.recipes.models import Recipe
-
+from .models import Recipe
+from .forms import RecipeForm
 
 def home(request):
     return render(request, "recipes/home.html")
@@ -13,11 +14,11 @@ def home(request):
 @csrf_exempt
 def add_recipe(request):
     if request.method.lower() == "post":
-        recipe = Recipe(
-            title=request.POST["title"],
-            ingredients=request.POST["ingredients"],
-            quantities=request.POST["quantities"],
-            method=request.POST["method"]
-        )
-        recipe.save()
-    return render(request, "recipes/add-recipe.html")
+        form = RecipeForm(request.POST)
+        if form.is_valid():
+            recipe = Recipe(**form.cleaned_data)
+            recipe.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = RecipeForm()
+    return render(request, "recipes/add-recipe.html", {'form':form})

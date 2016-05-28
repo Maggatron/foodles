@@ -5,25 +5,8 @@
     <body>
       <h1>Add your recipe here!</h1>
       <form action="/add" method="post">
-        <div>
-          <label for="title">Title:</label>
-          <input type="text" id="title" name="title"/>
-        </div>
-        <div>
-          <label for="ingredients">Ingredients:</label>
-          <textarea id="ingredients" name="ingredients"></textarea>
-        </div>
-        <div>
-          <label for="quantities">Quantities:</label>
-          <textarea id="quantities" name="quantities"></textarea>
-        </div>
-        <div>
-          <label for="method">Method:</label>
-          <textarea id="method" name="method"></textarea>
-        </div>
-        <div>
-          <button type="submit">Submit recipe</button>
-        </div>
+        {{ form }}
+        <button type="submit">Submit recipe</button>
       </form>
     </body>
 </html>
