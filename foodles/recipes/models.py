@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+from djangae.fields import ListField
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)

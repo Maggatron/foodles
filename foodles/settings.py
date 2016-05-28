@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'cspreports',
     'djangae.contrib.gauth.datastore',
     'djangae.contrib.security',
+    'foodles.recipes',
     # 'djangae.contrib.uniquetool',
 )
 
