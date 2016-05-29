@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from .models import Recipe
 from .forms import RecipeForm, DeleteRecipeForm
 
+
 def home(request):
     all_recipes = Recipe.objects.all()
     return render(request, "recipes/home.html", {"all_recipes":all_recipes})
@@ -27,6 +28,7 @@ def edit_recipe(request, id=None):
         form = RecipeForm(instance=recipe)
     return render(request, "recipes/edit-recipe.html", {'form':form})
 
+
 @csrf_exempt
 def delete_recipe(request, id=None):
     recipe = Recipe.objects.get(pk=int(id))
@@ -38,3 +40,8 @@ def delete_recipe(request, id=None):
     else:
         form = DeleteRecipeForm(instance=recipe)
     return render(request, "recipes/delete-recipe.html", {'form':form})
+
+
+def recipe_detail(request, id=None):
+    recipe = Recipe.objects.get(pk=int(id))
+    return render(request, "recipes/recipe-detail.html", {'recipe':recipe})

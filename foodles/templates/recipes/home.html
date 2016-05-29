@@ -10,7 +10,7 @@
      <ul>
        {% for recipe in all_recipes %}
        <li>
-         <h1>{{ recipe.title }}</h1>
+         <h1><a href="/{{ recipe.id }}">{{ recipe.title }}</a></h1>
          <p>{{ recipe.ingredients }}</p>
          <p>{{ recipe.quantities }}</p>
          <p>{{ recipe.method }}</p>
