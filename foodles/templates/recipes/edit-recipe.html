@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>FOODLES - {% if recipe %}edit{% else %}add{% endif %} recipe</title>
+  </head>
+    <body>
+      <h1>{% if recipe %}Edit{% else %}Add{% endif %} your recipe here!</h1>
+      <form action="" method="post">
+        {{ form.as_ul }}
+        <button type="submit">Submit recipe</button>
+      </form>
+    </body>
+</html>

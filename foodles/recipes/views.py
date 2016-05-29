@@ -13,13 +13,16 @@ def home(request):
 
 
 @csrf_exempt
-def add_recipe(request):
+def edit_recipe(request, id=None):
+    recipe = None
+    if id:
+        recipe = Recipe.objects.get(pk=int(id))
+
     if request.method.lower() == "post":
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST, instance=recipe)
         if form.is_valid():
-            recipe = Recipe(**form.cleaned_data)
-            recipe.save()
+            recipe = form.save()
             return HttpResponseRedirect('/')
     else:
-        form = RecipeForm()
-    return render(request, "recipes/add-recipe.html", {'form':form})
+        form = RecipeForm(instance=recipe)
+    return render(request, "recipes/edit-recipe.html", {'form':form})
