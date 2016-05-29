@@ -7,3 +7,8 @@ class RecipeForm(forms.ModelForm):
         fields = ["title", "ingredients", "quantities", "method"]
     ingredients = forms.CharField(widget=forms.Textarea)
     quantities = forms.CharField(widget=forms.Textarea)
+
+class DeleteRecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
+        fields = []
