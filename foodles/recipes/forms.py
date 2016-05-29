@@ -1,7 +1,9 @@
 from django import forms
+from .models import Recipe
 
-class RecipeForm(forms.Form):
-    title = forms.CharField(label="title", max_length=100)
-    ingredients = forms.CharField(label="ingredients", widget=forms.Textarea)
-    quantities = forms.CharField(label="quantities", widget=forms.Textarea)
-    method = forms.CharField(label="method", widget=forms.Textarea)
+class RecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
+        fields = ["title", "ingredients", "quantities", "method"]
+    ingredients = forms.CharField(widget=forms.Textarea)
+    quantities = forms.CharField(widget=forms.Textarea)

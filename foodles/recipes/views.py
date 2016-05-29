@@ -8,7 +8,8 @@ from .models import Recipe
 from .forms import RecipeForm
 
 def home(request):
-    return render(request, "recipes/home.html")
+    all_recipes = Recipe.objects.all()
+    return render(request, "recipes/home.html", {"all_recipes":all_recipes})
 
 
 @csrf_exempt
